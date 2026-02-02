@@ -629,27 +629,40 @@
         </div>
         <div class="row mt-1">
           <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
+            <div class="info contact-card">
+              <span class="contact-pill">Let’s connect</span>
+              <h3>Start a project or just say hello.</h3>
+              <p class="contact-lead">I’m always open to discussing product design work or partnership opportunities.</p>
+              <div class="info-item address">
                 <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>71/244 Bazzar street sholinghur</p>
+                <div>
+                  <h4>Location</h4>
+                  <p>71/244 Bazzar street sholinghur</p>
+                </div>
               </div>
-              <div class="email">
+              <div class="info-item email">
                 <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>chanshan250@gmail.com</p>
+                <div>
+                  <h4>Email</h4>
+                  <p>chanshan250@gmail.com</p>
+                </div>
               </div>
-              <div class="phone">
+              <div class="info-item phone">
                 <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+91 9159018692</p>
+                <div>
+                  <h4>Call</h4>
+                  <p>+91 9159018692</p>
+                </div>
               </div>
             </div>
          </div>
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="{{route('sendEmail')}}" method="post" role="form" class="php-email-form">
+            <form action="{{route('sendEmail')}}" method="post" role="form" class="php-email-form contact-card">
                 @csrf
+                <div class="form-header">
+                  <h3>Send a message</h3>
+                  <p>Fill out the form and I’ll get back to you within 24 hours.</p>
+                </div>
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <div class="form-field">
