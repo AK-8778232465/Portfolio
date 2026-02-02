@@ -25,7 +25,23 @@
    */
   const themeToggle = select('.theme-toggle')
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  const storedTheme = localStorage.getItem('theme')
+  const safeStorageGet = (key) => {
+    try {
+      return window.localStorage ? window.localStorage.getItem(key) : null
+    } catch (error) {
+      return null
+    }
+  }
+  const safeStorageSet = (key, value) => {
+    try {
+      if (window.localStorage) {
+        window.localStorage.setItem(key, value)
+      }
+    } catch (error) {
+      // Ignore write errors (private mode, blocked storage)
+    }
+  }
+  const storedTheme = safeStorageGet('theme')
   const setTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme)
     if (themeToggle) {
@@ -41,7 +57,7 @@
     themeToggle.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme') || 'light'
       const nextTheme = currentTheme === 'dark' ? 'light' : 'dark'
-      localStorage.setItem('theme', nextTheme)
+      safeStorageSet('theme', nextTheme)
       setTheme(nextTheme)
     })
   }
