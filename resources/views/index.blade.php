@@ -67,6 +67,9 @@
   <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+    <span class="material-symbols-rounded" aria-hidden="true">dark_mode</span>
+  </button>
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex flex-column justify-content-center">
 
@@ -648,19 +651,31 @@
             <form action="{{route('sendEmail')}}" method="post" role="form" class="php-email-form">
                 @csrf
                 <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <div class="col-md-6 form-group">
+                    <div class="form-field">
+                      <input type="text" name="name" class="form-control" id="name" placeholder=" " required>
+                      <label for="name">Your Name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="form-field">
+                      <input type="email" class="form-control" name="email" id="email" placeholder=" " required>
+                      <label for="email">Your Email</label>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <div class="form-group mt-3">
+                  <div class="form-field">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder=" " required>
+                    <label for="subject">Subject</label>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
+                <div class="form-group mt-3">
+                  <div class="form-field">
+                    <textarea class="form-control" name="message" id="message" rows="5" placeholder=" " required></textarea>
+                    <label for="message">Message</label>
+                  </div>
+                </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message">{{ session('error')}}</div>
