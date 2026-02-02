@@ -67,6 +67,9 @@
   <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+    <span class="material-symbols-rounded" aria-hidden="true">dark_mode</span>
+  </button>
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex flex-column justify-content-center">
 

@@ -21,6 +21,48 @@
   }
 
   /**
+   * Theme toggle
+   */
+  const themeToggle = select('.theme-toggle')
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const safeStorageGet = (key) => {
+    try {
+      return window.localStorage ? window.localStorage.getItem(key) : null
+    } catch (error) {
+      return null
+    }
+  }
+  const safeStorageSet = (key, value) => {
+    try {
+      if (window.localStorage) {
+        window.localStorage.setItem(key, value)
+      }
+    } catch (error) {
+      // Ignore write errors (private mode, blocked storage)
+    }
+  }
+  const storedTheme = safeStorageGet('theme')
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme)
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', theme === 'dark')
+      const icon = themeToggle.querySelector('.material-symbols-rounded')
+      if (icon) {
+        icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode'
+      }
+    }
+  }
+  setTheme(storedTheme || (prefersDark ? 'dark' : 'light'))
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light'
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark'
+      safeStorageSet('theme', nextTheme)
+      setTheme(nextTheme)
+    })
+  }
+
+  /**
    * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
